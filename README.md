@@ -4,7 +4,7 @@ APi con basicos endpoints que permite listar los colores de manera paginada, asi
 
 ## Puedes visitarlo en
 
-[https://coloreando-app.herokuapp.com/](https://coloreando-app.herokuapp.com/)
+[https://coloreando-api.herokuapp.com/api/v1](https://coloreando-api.herokuapp.com/api/v1)
 
 ## Tecnologías implicadas
 

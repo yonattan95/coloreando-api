@@ -4,7 +4,7 @@
     "description": "APi con basicos endpoints que permite listar los colores de manera paginada, asi como tambien una versión expandible de un color seleccionado. Tambien, permite agregar nuevo colores a la lista de colores.",
     "title": "Swagger Colores"
   },
-  "host": "localhost:3001",
+  "host": "https://coloreando-api.herokuapp.com",
   "basePath": "/api/v1",
   "tags": [
     {
@@ -12,7 +12,7 @@
       "description": "Paleta de colores empresariales"
     }
   ],
-  "schemes": ["http", "https"],
+  "schemes": ["https", "http"],
   "paths": {
     "/colores": {
       "get": {
