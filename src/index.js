@@ -11,7 +11,8 @@ app.use(express.json());
 //routes
 app.use('/api/v1', colorsRouter);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+  
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`running on port ${PORT}`);
