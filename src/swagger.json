@@ -1,0 +1,256 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "APi con basicos endpoints que permite listar los colores de manera paginada, asi como tambien una versión expandible de un color seleccionado. Tambien, permite agregar nuevo colores a la lista de colores.",
+    "title": "Swagger Colores"
+  },
+  "host": "localhost:3001",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "Colores",
+      "description": "Paleta de colores empresariales"
+    }
+  ],
+  "schemes": ["http", "https"],
+  "paths": {
+    "/colores": {
+      "get": {
+        "tags": ["colores"],
+        "summary": "Listado de colores paginados",
+        "description": "",
+        "operationId": "",
+        "consumes": [],
+        "produces": ["application/json", "application/xml"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Número de la página",
+            "required": false,
+            "type": "number",
+            "items": {
+              "type": "number",
+              "default": 1
+            }
+          },
+          {
+            "name": "rowsPerPage",
+            "in": "query",
+            "description": "Número de registros por página",
+            "required": false,
+            "type": "number",
+            "items": {
+              "type": "number",
+              "default": 6
+            }
+          },
+          {
+            "name": "xml",
+            "in": "query",
+            "description": "Retorna los datos en formato XML",
+            "required": false,
+            "type": "boolean",
+            "items": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Parametros incorrectos"
+          },
+          "500": {
+            "description": "Ocurrio un error"
+          },
+          "200": {
+            "description": "Lista de colores",
+            "schema": {
+              "$ref": "#/definitions/ColorList"
+            }
+          }
+        }
+      }
+    },
+    "/color/{colorId}": {
+      "get": {
+        "tags": ["color"],
+        "summary": "Detalle de un color",
+        "description": "",
+        "operationId": "",
+        "consumes": [],
+        "produces": ["application/json", "application/xml"],
+        "parameters": [
+          {
+            "name": "colorId",
+            "in": "path",
+            "description": "Id del color",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "xml",
+            "in": "query",
+            "description": "Retorna los datos en formato XML",
+            "required": false,
+            "type": "boolean",
+            "items": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Parametros incorrectos"
+          },
+          "500": {
+            "description": "Ocurrio un error"
+          },
+          "200": {
+            "description": "Color encontrado",
+            "schema": {
+              "$ref": "#/definitions/ColorDetail"
+            }
+          }
+        }
+      }
+    },
+    "/color/": {
+      "post": {
+        "tags": ["color"],
+        "summary": "Crea un nuevo color",
+        "description": "",
+        "operationId": "",
+        "consumes": [],
+        "produces": ["application/json", "application/xml"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Nuevo color",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewColor"
+            }
+          },
+          {
+            "name": "xml",
+            "in": "query",
+            "description": "Retorna los datos en formato XML",
+            "required": false,
+            "type": "boolean",
+            "items": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Parametros incorrectos"
+          },
+          "500": {
+            "description": "Ocurrio un error"
+          },
+          "200": {
+            "description": "Color creado",
+            "schema": {
+              "$ref": "#/definitions/ColorDetail"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "definitions": {
+    "Color": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "name": {
+          "type": "number"
+        },
+        "color": {
+          "type": "number"
+        }
+      },
+      "xml": {
+        "colors": "color"
+      }
+    },
+    "ColorList": {
+      "type": "object",
+      "properties": {
+        "colors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Color"
+          }
+        },
+        "page": {
+          "type": "number"
+        },
+        "rowsPerPage": {
+          "type": "number"
+        },
+        "total": {
+          "type": "number"
+        }
+      }
+    },
+    "ColorDetail": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        },
+        "pantone_value": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "color"
+      }
+    },
+    "NewColor": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "year": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        },
+        "pantone_value": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "color"
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
