@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
+  "engines": {
+    "node": "14.15.4",
+    "yarn": "1.22.5"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon ."
+    "start": "node src/index.js",
+    "start:dev": "nodemon src/index.js"
   },
   "author": "",
   "license": "ISC",

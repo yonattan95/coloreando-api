@@ -1,4 +1,4 @@
-# API de Coloreando 
+# API de Coloreando
 
 APi con basicos endpoints que permite listar los colores de manera paginada, asi como tambien una versión expandible de un color seleccionado. Tambien, permite agregar nuevo colores a la lista de colores.
 
@@ -17,19 +17,18 @@ APi con basicos endpoints que permite listar los colores de manera paginada, asi
 
 - NodeJs 12+
 - PostgreSQL 13+
+- Yarn 1.x
 
 ## Dependencias del proyecto
 
 ```sh
 # Instalación local
-$ npm i
+$ yarn install
 
-# Instalación en producción
-$ npm i --production
 ```
 
 ## Compilar y ejecutar
 
 ```sh
-$ npm start
+$ yarn start
 ```
