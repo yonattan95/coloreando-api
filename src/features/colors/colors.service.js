@@ -1,3 +1,4 @@
+const { logger } = require('../../helpers/logger');
 const { db } = require('../../services/db/postgres');
 const { ColorDetailResponse } = require('./models/color_detail_reponse');
 const ColorResponse = require('./models/color_response');
@@ -6,16 +7,17 @@ const ColorResponse = require('./models/color_response');
 module.exports.getColors = async function (page = 1, rowsPerPage = 6) {
   try {
     const offset = rowsPerPage * (page - 1);
-    const res = await db.query("SELECT * FROM colors LIMIT $1 OFFSET $2", [rowsPerPage, offset]);
+    const res = await db.query("SELECT * FROM colors ORDER BY id ASC LIMIT $1 OFFSET $2", [rowsPerPage, offset]);
+    const resCount = await db.query("SELECT id FROM colors");
     const colorsRaw = res.rows;
     const colors = colorsRaw.map(color => new ColorResponse(
       color.id,
       color.name,
       color.color
     ));
-    return colors;
+    return { colors, total: resCount.rows.length };
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return new Error(error.message);
   }
 };
@@ -36,7 +38,7 @@ module.exports.getColorById = async function (colorId) {
     );
     return color;
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return new Error(error.message);
   }
 };
@@ -49,7 +51,7 @@ module.exports.saveColor = async function (color) {
     }
     return res.rows[0];
   } catch (error) {
-    console.log(error);
+    logger.error(error);
     return new Error(error.message);
   }
 };
