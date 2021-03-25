@@ -4,7 +4,9 @@ APi con basicos endpoints que permite listar los colores de manera paginada, asi
 
 ## Puedes visitarlo en
 
-[https://coloreando-api.herokuapp.com/api/v1](https://coloreando-api.herokuapp.com/api/v1)
+* [URL base del API desplegado en Heruku](https://coloreando-api.herokuapp.com/api/v1)
+* [Repositorio en Github](https://github.com/yonattan95/coloreando-api)
+* [Documentación del API](https://coloreando-api.herokuapp.com/api-docs)
 
 ## Tecnologías implicadas
 
@@ -12,6 +14,7 @@ APi con basicos endpoints que permite listar los colores de manera paginada, asi
 - [Express](https://expressjs.com/): Micro framework para NodeJs
 - [PostgreSQL](https://www.postgresql.org/): Motor de base de datos relacional
 - [Jest](https://jestjs.io/): Framework de testing
+- [Swagger](https://swagger.io/): Herramienta progresiva para el diseño y documentación de APIs
 
 ## Requisitos
 

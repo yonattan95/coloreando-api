@@ -10,7 +10,6 @@ app.use(express.json());
 
 //routes
 app.use('/api/v1', colorsRouter);
-app.use('/api/v1', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
   
